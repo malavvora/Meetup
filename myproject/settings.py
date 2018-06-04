@@ -32,13 +32,13 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 # Application definition
 
 INSTALLED_APPS = [
-    'meetup.apps.MeetupConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'meetup',
 ]
 
 MIDDLEWARE = [
@@ -119,8 +119,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+# STATIC_ROOT = '/home/quixom/malav/PycharmProjects/myproject/static'
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
-STATIC_DIRECTORIES = os.path.join(BASE_DIR, 'static')
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
