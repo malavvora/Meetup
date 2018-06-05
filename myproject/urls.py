@@ -23,6 +23,5 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('', include('meetup.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
