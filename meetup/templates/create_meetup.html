@@ -29,7 +29,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+{% if user.is_authenticated %}
 	<div class="limiter">
 		<div class="container-login100" >
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
@@ -79,6 +79,9 @@
 			</div>
 		</div>
 	</div>
-
+{% else %}
+You need to register first
+    <a class="btn" href="register">Sign up</a>
+{% endif %}
 </body>
 </html>
