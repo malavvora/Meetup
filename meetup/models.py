@@ -1,12 +1,6 @@
 from django.db import models
 
 
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-
-
 class Category(models.Model):
     category = models.CharField(max_length=100)
 
@@ -23,7 +17,7 @@ class Meetup(models.Model):
         ordering = ['-meetup_date']
 
     def __str__(self):
-        return self.meetup_name, self.meetup_category, self.meetup_date
+        return self.meetup_name
 
 
 class Group(models.Model):
