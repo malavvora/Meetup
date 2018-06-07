@@ -1,4 +1,5 @@
-{% load static %}
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,82 +7,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <!--===============================================================================================-->
 </head>
 <body>
-{% if user.is_authenticated %}
-	<div class="limiter">
-		<div class="container-login100" >
-			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" method="post" action="{% url 'meetup:create_meetup' %}">
-                    {% csrf_token %}
-					<span class="login100-form-title p-b-53">
-						Create a new Meetup
-					</span>
+{{% block content %}
+<div class="bg-img">
+<div class="container">
 
-					<div class="p-t-31 p-b-9">
-						<span class="txt1">
-							Meetup name
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Meetup name is required">
-						<input class="input100" type="text" name="meetup_name" >
-						<span class="focus-input100"></span>
-					</div>
-
-                    <div class="p-t-31 p-b-9">
-						<span class="txt1">
-							Meetup Category
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Category is required">
-						<input class="input100" type="text" name="meetup_category" >
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="p-t-13 p-b-9">
-						<span class="txt1">
-							Meetup Date
-						</span>
-
-
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Date is required">
-						<input class="input100" type="date" name="meetup_date" >
-						<span class="focus-input100"></span>
-					</div>
-					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
-                            <li>Create Meetup</li>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-{% else %}
-You need to register first
-    <a class="btn" href="register">Sign up</a>
-{% endif %}
+  <form method="POST">
+    {% csrf_token %}
+        {% crispy form %}
+  </form>
+</div>
+</div>
+{% endblock %}
 </body>
 </html>

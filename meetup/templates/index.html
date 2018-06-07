@@ -3,6 +3,58 @@
 <head>
 <title>Meetup</title>
 <meta charset="utf-8">
+    		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.dropotron.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Shift &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FreeHTML5.co" />
+
+	<!--
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE
+	DESIGNED & DEVELOPED by FreeHTML5.co
+
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-wide.css' %}" />
+		</noscript>
+
 <style>
     .centered {
     position: absolute;
@@ -45,7 +97,7 @@
 <div id="top">
 <div class="wrapper row0">
   <div id="topbar" class="hoc clear"> 
-    <div class="fl_left">
+    <div class="fl_right">
       <ul class="nospace">
           {% if user.is_authenticated %}
   Hi {{ user.username }}!
@@ -53,17 +105,18 @@
           {% else %}
         <li><a href=""><i class="fas fa-home fa-lg"></i></a></li>
         <li><a href="login/">Login</a></li>
-        <li><a href="register/">Register</a></li>
+        <li><a href="register/?next={{ request.path }}">Register</a></li>
           {% endif %}
       </ul>
     </div>
    </div>
 </div>
+</div>
 
 <div class="wrapper row1">
   <header id="header" class="hoc clear"> 
     <div id="logo" class="one_quarter first">
-      <h1><a href="">Meetup</a></h1>
+      <h1 href="">Meetup</h1>
      </div>
   </header>
 </div>
@@ -79,7 +132,7 @@
             {% if user.is_authenticated %}
                 <a class="btn btn-info" href="create_meetup/">Create a Meetup</a>
             {% else %}
-        <a class="btn" href="register/">Sign up</a>
+                <a class="btn" href="register/?next={{ request.path }}">Sign up</a>
             {% endif %}
         </div>
   </div>
@@ -87,25 +140,102 @@
   </div>
 {% endblock %}
 
+<div id="extra">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_1.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+				    			<h3>Tech</h3>
+					    		<span class="cat">Tech</span>
+			    			</div>
+						</div>
+				    </div>
+                </a>
+			</div>
+			<div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_2.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+								<h3>Power Led Light</h3>
+								<span class="cat">Illustration</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_3.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+								<h3>Elephant Origami</h3>
+								<span class="cat">Logo</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_4.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+								<h3>Electric Kick Scooter</h3>
+								<span class="cat">Web Design</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_5.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+								<h3>Shark Diver</h3>
+								<span class="cat">Branding</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 text-center animate-box">
+				<a class="work" href="portfolio_detail.html">
+					<div class="work-grid"><img src='{% static 'images/demo/backgrounds/category_6.jpg' %}' alt="">
+						<div class="inner">
+							<div class="desc">
+								<h3>Objekte Unserer Tage Berlin</h3>
+								<span class="cat">Logo</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+        </div>
+    </div>
+</div>
 <div class="wrapper row3">
-  <main class="row firstinfo">
-          <article>
+    <main class="row firstinfo">
+         <article>
               <h1 class="heading">Explore by category</h1>
-              {% if category %}
-                <ul>
-                    {% for cat in category %}
+              {% if categories %}
+                    <ul>
+                    {% for category_name in categories %}
                         <div class="btn-group">
-                        <li><a href="{{ cat.id }}" class="btn btn-info" style="background-image:url('{% static 'images/demo/backgrounds/category.jpg' %}');" role="button">{{ cat.category }} </a></li>
+                            <li><a href="{{ category_name.id }}" class="btn btn-info" style="background-image:url('{% static 'images/demo/backgrounds/category.jpg' %}');" role="button">{{ category_name.category }} </a></li>
                         </div>
                     {% endfor %}
-
-                </ul>
+                    </ul>
               {% else %}
                      <p>No categories are available.</p>
-                {% endif %}
-           </article>
-    <div class="clear"></div>
-  </main>
+              {% endif %}
+         </article>
+        <div class="clear"></div>
+    </main>
 </div>
 
 {% if user.is_authenticated %}

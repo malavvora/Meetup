@@ -1,4 +1,6 @@
+import datetime
 from django.db import models
+from django.forms import ModelForm
 
 
 class Category(models.Model):
@@ -25,3 +27,10 @@ class Group(models.Model):
 
     def __str__(self):
         return self.group_name
+
+
+class CreateMeetupForm(ModelForm):
+    class Meta:
+        model = Meetup
+        fields = '__all__'
+

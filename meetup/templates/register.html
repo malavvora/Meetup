@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static crispy_forms_tags %}
 <head>
 <title>Sign up</title>
 <meta charset="utf-8">
@@ -67,27 +67,13 @@
     <link href="{% static 'layout/styles/layout.css'%}" rel="stylesheet" type="text/css" media="all">
 </head>
 
-
-
 {% block content %}
 <div class="bg-img">
 <div class="container">
 
-  <form method="POST">
+  <form method="POST" action="./?next={{ redirect_to }} >
     {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit" href="home/">Sign up</button>
+        {% crispy form %}
   </form>
 </div>
 </div>
